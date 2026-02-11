@@ -1,5 +1,5 @@
 {
-    "name": "buckaroo/magento2",
+    "name": "vendic/buckaroo-magento2-forked",
     "description": "Buckaroo Magento 2 extension",
     "require": {
         "php": "^8.0 || ^8.1 || ^8.2 || ^8.3 || ^8.4",
