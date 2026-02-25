@@ -58,10 +58,14 @@ class CustomerDataBuilder extends AbstractDataBuilder
             $customerDoB = $this->getOrder()->getCustomerDob() ?? '1990-01-01';
         }
 
-        return date(
-            $this->getFormatDate(),
-            strtotime(str_replace('/', '-', $customerDoB))
-        );
+        $timestamp = strtotime(str_replace('/', '-', $customerDoB));
+        if ($timestamp === false) {
+            throw new \InvalidArgumentException(
+                __('Invalid date of birth provided. Please enter a complete date (e.g. 01-01-1990).')->render()
+            );
+        }
+
+        return date($this->getFormatDate(), $timestamp);
     }
 
     /**
